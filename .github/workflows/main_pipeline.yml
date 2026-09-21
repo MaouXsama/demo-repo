@@ -1,0 +1,18 @@
+name: Optimized Cost Main Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    # استراتيجية 1: تقييد التشغيل بملفات محددة فقط لمنع الهدر عند تعديل ملفات غير برمجية
+    paths:
+      - "src/**"
+      - "README.md"
+  
+  # استراتيجية 2: السماح بالتشغيل اليدوي للتحكم الكامل
+  workflow_dispatch:
+
+jobs:
+  # استراتيجية 3: استدعاء الملف المشترك المركزي وتمرير المهام له
+  call-shared-testing:
+    uses: ./.github/workflows/reusable_test.yml

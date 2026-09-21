@@ -1,0 +1,12 @@
+name: Reusable Test Workflow
+
+# تفعيل خاصية الاستدعاء من مسارات أخرى
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run Dummy Tests
+      run: echo "Running optimized software tests..."
