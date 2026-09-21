@@ -1,0 +1,23 @@
+name: Reusable Build Workflow
+
+# تفعيل محفّز الاستدعاء من مسارات أخرى
+on:
+  workflow_call:
+    inputs:
+      build-command:
+        description: "The command to build the project."
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. سحب كود المشروع
+    - name: Check Out Code
+      uses: actions/checkout@v4
+
+    # 2. تنفيذ أمر البناء الممرر عبر المدخلات
+    - name: Run Build Command
+      run: ${{ inputs.build-command }}
